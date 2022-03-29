@@ -16,7 +16,7 @@ public class IADistance : MonoBehaviour
     private float currentDistance;
     // Static variables.
     public static bool isNear;
-    
+
     private void Update()
     {
         currentDistance = Vector2.Distance(transform.position, objectToDetect.position);
