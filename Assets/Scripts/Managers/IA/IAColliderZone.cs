@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class IAColliderZone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // IMPORTANT variables.
+    [Header("[!] IMPORTANT VARIABLES")]
+    [SerializeField] private GameObject objectToDetect;
+    // Private variables.
+    private RaycastHit2D hitLeft, hitRight;
+    public static bool isNear;
+
+    private void OnTriggerStay2D(Collider2D other)
     {
-        
+        if (other.tag.Equals("Player"))
+        {
+            isNear = true;
+            print("PLAYER");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        
+        if (other.tag.Equals("Player"))
+        {
+            isNear = false;
+            print("PLAYER");
+        }
     }
 }
