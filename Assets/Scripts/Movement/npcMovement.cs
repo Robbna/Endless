@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class NpcMovement : MonoBehaviour
 {
-    [SerializeField] private Transform objectToFollow;
+    // MISC variables.
+    [Header("[?] Public variables")]
     [SerializeField] private float speed;
 
     private void Update()
     {
+        // --------------------< IF 'RAYCAST IA' IS ENABLED >--------------------
         if (IARayCast.isLeft)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -17,9 +19,14 @@ public class NpcMovement : MonoBehaviour
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
-
-        if(IAColliderZone.isNear){
-            transform.position = objectToFollow.position;
+        // --------------------< IF 'COLLIDER IA' IS ENABLED >--------------------
+        if (IAColliderZone.isNear && mDetectDirection.dirLeft)
+        {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
+        if (IAColliderZone.isNear && mDetectDirection.dirRight)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
 
     }

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class IAColliderZone : MonoBehaviour
 {
-    // IMPORTANT variables.
-    [Header("[!] IMPORTANT VARIABLES")]
-    [SerializeField] private GameObject objectToDetect;
     // Private variables.
     private RaycastHit2D hitLeft, hitRight;
+    // Static variables.
     public static bool isNear;
 
     private void OnTriggerStay2D(Collider2D other)
