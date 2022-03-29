@@ -6,9 +6,11 @@ public class IARayCast : MonoBehaviour
 {
     // IMPORTANT variables.
     [Header("[!] IMPORTANT VARIABLES")]
+    [Tooltip("This variable represent the object to detect.")]
     [SerializeField] private GameObject objectToDetect;
     // MISC variables.
     [Header("[?] Public variables")]
+    [Tooltip("This variable represent the ray distance.")]
     [SerializeField] public float rayDistance;
     // Private variables.
     private RaycastHit2D hitLeft, hitRight;
