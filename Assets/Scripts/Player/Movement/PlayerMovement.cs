@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         // Player movement based on the input data.
         transform.Translate(new Vector2(dirX, 0.0f) * playerSpeed * Time.deltaTime);
 
-        canJump = mCheckGround.checkGround(gameObject.transform, 1f);
+        canJump = mCheckGround.checkGround(gameObject.transform, 0.6f);
 
         if (canJump)
         {
