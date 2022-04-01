@@ -878,6 +878,7 @@ MonoBehaviour:
   nickField: {fileID: 784091471}
   emailField: {fileID: 1261896722}
   passwdField: {fileID: 19691965}
+  popUp: {fileID: 0}
 --- !u!1 &1261896720
 GameObject:
   m_ObjectHideFlags: 0

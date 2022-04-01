@@ -1,18 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class mPopUp : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Text popUpMSG;
+
     void Start()
     {
-        
+        gameObject.SetActive(false);
+        popUpMSG = GetComponentInChildren<Text>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void showMessage(string msg, float time)
     {
-        
+        gameObject.SetActive(true);
+        StartCoroutine(messageCoroutine(msg, time));
+    }
+
+    private IEnumerator messageCoroutine(string msg, float time)
+    {
+        popUpMSG.text = msg;
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
     }
 }

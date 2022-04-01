@@ -6,6 +6,7 @@ using Firebase.Auth;
 public class DBAuthManager : MonoBehaviour
 {
     [SerializeField] private InputField nickField, emailField, passwdField;
+    [SerializeField] private mPopUp popUp;
     private FirebaseAuth auth;
     private DatabaseReference mDatabaseRef;
     void Start()
@@ -30,13 +31,18 @@ public class DBAuthManager : MonoBehaviour
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
+            if (task.IsCompleted)
+            {
+                // Firebase user has been created.
+                FirebaseUser newUser = task.Result;
+                // Push user to Realtime Database.
+                addUser(nickField.text, emailField.text);
+                Debug.LogFormat("Firebase user created successfully: {0} ({1})",
+                    newUser.DisplayName, newUser.UserId);
+            }
+            popUp.showMessage("User created successfully!", 3);
 
-            // Firebase user has been created.
-            Firebase.Auth.FirebaseUser newUser = task.Result;
-            // Push user to Realtime Database.
-            addUser(nickField.text, emailField.text);
-            Debug.LogFormat("Firebase user created successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
+
         });
     }
 
