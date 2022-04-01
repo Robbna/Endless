@@ -1,18 +1,18 @@
 public class User
 {
-    public string username;
+    public string nickname;
     public string email;
-    public string passwd;
+    public int score;
 
     public User()
     {
     }
 
-    public User(string username, string email, string passwd)
+    public User(string nickname, string email, int score)
     {
-        this.username = username;
+        this.nickname = nickname;
         this.email = email;
-        this.passwd = passwd;
+        this.score = score;
     }
 
 }
