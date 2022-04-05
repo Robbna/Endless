@@ -81,7 +81,7 @@ public class DBAuthManager : MonoBehaviour
         // Push newUser to RealTime database.
         mDatabaseRef.Child("users").Push().SetRawJsonValueAsync(json);
     }
-    
+
     public void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
     {
         FirebaseDatabase.DefaultInstance
@@ -98,6 +98,7 @@ public class DBAuthManager : MonoBehaviour
                     {
                         var score = childSnapshot.Child("email").Value.ToString();
                         testText.text = score.ToString();
+                        mDatabaseRef.Child("users").Child("score").SetValueAsync(10);
                         Debug.Log(name.ToString());
                     }
                 }
