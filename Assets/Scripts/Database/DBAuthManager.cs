@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Database;
@@ -8,11 +9,13 @@ public class DBAuthManager : MonoBehaviour
     [SerializeField] private InputField nickFieldRegister, emailFieldRegister, passwdFieldRegister;
     [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
     [SerializeField] private Text testText;
+    [SerializeField] private Player player;
     //[SerializeField] private mPopUp popUp;
     private static FirebaseAuth auth;
     private static FirebaseUser user;
     private static DatabaseReference mDatabaseRef;
     private static string pushKey;
+
 
     private void Start()
     {
@@ -81,11 +84,11 @@ public class DBAuthManager : MonoBehaviour
             FirebaseUser newUser = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
-            Debug.Log(pushKey);
+            getUserScore();
         });
     }
 
-    public static void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
+    public void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
     {
         FirebaseDatabase.DefaultInstance
             .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
@@ -100,17 +103,14 @@ public class DBAuthManager : MonoBehaviour
                     foreach (var childSnapshot in e2.Snapshot.Children)
                     {
                         var score = childSnapshot.Child("score").Value;
-                        // testText.text = score.ToString();
-                        Debug.Log(score);
-                        // mDatabaseRef.Child("users").Child("score").SetValueAsync(10);
+                        player.score = Convert.ToInt32(score.ToString());
                     }
                 }
             };
     }
 
-    public static void setUserScore()
+    public void saveScore()
     {
-        string currentUserKey;
         FirebaseDatabase.DefaultInstance
             .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
             .ValueChanged += (object sender2, ValueChangedEventArgs e2) =>
@@ -124,8 +124,7 @@ public class DBAuthManager : MonoBehaviour
                     foreach (var childSnapshot in e2.Snapshot.Children)
                     {
                         var score = childSnapshot.Child("score").Value.ToString();
-                        mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(20);
-                        Debug.Log(childSnapshot.Key);
+                        mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(player.score);
 
                     }
                 }
