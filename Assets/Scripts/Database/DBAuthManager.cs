@@ -9,19 +9,33 @@ public class DBAuthManager : MonoBehaviour
     [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
     [SerializeField] private Text testText;
     //[SerializeField] private mPopUp popUp;
-    private FirebaseAuth auth;
-    private FirebaseUser user;
-    private DatabaseReference mDatabaseRef;
+    private static FirebaseAuth auth;
+    private static FirebaseUser user;
+    private static DatabaseReference mDatabaseRef;
+    private static string pushKey;
 
-    void Start()
+    private void Start()
     {
         // AUTH database reference.
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         // REALTIME database reference.
         mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
-
     }
 
+    private void addUser(string name, string email)
+    {
+        // Create new user.
+        User newUser = new User(name, email, 0);
+        // JSONfy newUser.
+        string json = JsonUtility.ToJson(newUser);
+        // Push newUser to RealTime database.
+        mDatabaseRef.Child("users").Push().SetRawJsonValueAsync(json);
+        pushKey = mDatabaseRef.Child("users").Push().Key;
+    }
+
+    /*
+    PUBLIC METHODS
+    */
     public void registerUser()
     {
         auth.CreateUserWithEmailAndPasswordAsync(emailFieldRegister.text, passwdFieldRegister.text).ContinueWith(task =>
@@ -45,8 +59,6 @@ public class DBAuthManager : MonoBehaviour
                 Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
             }
-            //popUp.showMessage("User created successfully!", 3);
-
 
         });
     }
@@ -66,23 +78,14 @@ public class DBAuthManager : MonoBehaviour
                 return;
             }
 
-            Firebase.Auth.FirebaseUser newUser = task.Result;
+            FirebaseUser newUser = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
+            Debug.Log(pushKey);
         });
     }
 
-    private void addUser(string name, string email)
-    {
-        // Create new user.
-        User newUser = new User(name, email, 0);
-        // JSONfy newUser.
-        string json = JsonUtility.ToJson(newUser);
-        // Push newUser to RealTime database.
-        mDatabaseRef.Child("users").Push().SetRawJsonValueAsync(json);
-    }
-
-    public void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
+    public static void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
     {
         FirebaseDatabase.DefaultInstance
             .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
@@ -96,12 +99,39 @@ public class DBAuthManager : MonoBehaviour
                 {
                     foreach (var childSnapshot in e2.Snapshot.Children)
                     {
-                        var score = childSnapshot.Child("email").Value.ToString();
-                        testText.text = score.ToString();
-                        mDatabaseRef.Child("users").Child("score").SetValueAsync(10);
-                        Debug.Log(name.ToString());
+                        var score = childSnapshot.Child("score").Value;
+                        // testText.text = score.ToString();
+                        Debug.Log(score);
+                        // mDatabaseRef.Child("users").Child("score").SetValueAsync(10);
                     }
                 }
             };
+    }
+
+    public static void setUserScore()
+    {
+        string currentUserKey;
+        FirebaseDatabase.DefaultInstance
+            .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
+            .ValueChanged += (object sender2, ValueChangedEventArgs e2) =>
+            {
+                if (e2.DatabaseError != null)
+                {
+                    Debug.LogError(e2.DatabaseError.Message);
+                }
+                if (e2.Snapshot != null && e2.Snapshot.ChildrenCount > 0)
+                {
+                    foreach (var childSnapshot in e2.Snapshot.Children)
+                    {
+                        var score = childSnapshot.Child("score").Value.ToString();
+                        mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(20);
+                        Debug.Log(childSnapshot.Key);
+
+                    }
+                }
+            };
+
+
+
     }
 }
