@@ -8,7 +8,6 @@ public class DBAuthManager : MonoBehaviour
 {
     [SerializeField] private InputField nickFieldRegister, emailFieldRegister, passwdFieldRegister;
     [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
-    [SerializeField] private Text testText;
     [SerializeField] private Player player;
     //[SerializeField] private mPopUp popUp;
     private static FirebaseAuth auth;
