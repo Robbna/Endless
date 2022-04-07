@@ -369,11 +369,11 @@ GameObject:
   - component: {fileID: 2058514942}
   - component: {fileID: 2058514941}
   - component: {fileID: 2058514943}
-  - component: {fileID: 2058514940}
   - component: {fileID: 2058514939}
   - component: {fileID: 2058514938}
+  - component: {fileID: 2058514940}
   - component: {fileID: 2058514937}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

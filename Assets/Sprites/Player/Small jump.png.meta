@@ -232,9 +232,9 @@ TextureImporter:
       name: Small jump_6
       rect:
         serializedVersion: 2
-        x: 7
+        x: 16
         y: 27
-        width: 39
+        width: 21
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -253,9 +253,9 @@ TextureImporter:
       name: Small jump_9
       rect:
         serializedVersion: 2
-        x: 5
+        x: 16
         y: 0
-        width: 43
+        width: 21
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}

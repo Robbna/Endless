@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float playerJumpAltitude;
     // Private variables.
     private Rigidbody2D rgb;
-    private bool canJump;
     private SpriteRenderer spr;
     private Animator anim;
 
@@ -46,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         {
             spr.flipX = true;
             anim.SetBool("isRunning", true);
+
         }
 
 
@@ -53,10 +53,14 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(new Vector2(dirX, 0.0f) * playerSpeed * Time.deltaTime);
 
         // Jump system
-        canJump = mCheckGround.checkGround(gameObject.transform, playerJumpAltitude);
-        if (canJump)
+        if (mCheckGround.checkGround(gameObject.transform, playerJumpAltitude))
         {
+            anim.SetBool("isGrounded", true);
             Jump();
+        }
+        else
+        {
+            anim.SetBool("isGrounded", false);
         }
 
 
@@ -69,7 +73,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            anim.SetTrigger("Jump");
             rgb.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
+            //anim.SetBool("isJumping", true);
+
         }
     }
 
