@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // [!] COMPONENTS REQUIRED.
-[RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(IACollider_movement))]
 
 public class IAColliderZone : MonoBehaviour
 {
-    // Private variables.
-    private RaycastHit2D hitLeft, hitRight;
-    // Static variables.
-    public static bool isNear;
+    // Public variables.
+    [HideInInspector] public bool isNear;
 
     private void OnTriggerStay2D(Collider2D other)
     {

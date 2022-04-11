@@ -30,17 +30,19 @@ public class PlayerMovement : MonoBehaviour
         // Variable to store the input data from the player [-1, 1].
         float dirX = Input.GetAxis("Horizontal");
 
+        // Stop.
         if (dirX == 0)
         {
             anim.SetBool("isRunning", false);
         }
-
+        // Right.
         if (dirX > 0)
         {
             spr.flipX = false;
             anim.SetBool("isRunning", true);
 
         }
+        // Left.
         if (dirX < 0)
         {
             spr.flipX = true;

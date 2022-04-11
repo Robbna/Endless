@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// [!] COMPONENTS REQUIRED.
+[RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(IADistance_movement))]
 public class IADistance : MonoBehaviour
 {
     // IMPORTANT variables.
@@ -14,8 +15,8 @@ public class IADistance : MonoBehaviour
     [SerializeField] public float minDistance;
     // Private variables.
     private float currentDistance;
-    // Static variables.
-    public static bool isNear;
+    // Public variables.
+    [HideInInspector] public bool isNear;
 
     private void Update()
     {

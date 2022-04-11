@@ -5,7 +5,7 @@ using UnityEngine;
 public class mDetectDirection : MonoBehaviour
 {
     [SerializeField] private Transform objectToDetect;
-    public static bool dirLeft, dirRight;
+    [HideInInspector] public bool dirLeft, dirRight;
 
     private void Update()
     {
@@ -20,6 +20,5 @@ public class mDetectDirection : MonoBehaviour
             dirLeft = true;
             dirRight = false;
         }
-
     }
 }
