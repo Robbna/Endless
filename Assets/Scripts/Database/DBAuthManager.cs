@@ -102,7 +102,8 @@ public class DBAuthManager : MonoBehaviour
                     foreach (var childSnapshot in e2.Snapshot.Children)
                     {
                         var score = childSnapshot.Child("score").Value;
-                        player.score = Convert.ToInt32(score.ToString());
+                        //player.score = Convert.ToInt32(score.ToString());
+                        Player.score = Convert.ToInt32(score.ToString());
                     }
                 }
             };
@@ -123,7 +124,8 @@ public class DBAuthManager : MonoBehaviour
                     foreach (var childSnapshot in e2.Snapshot.Children)
                     {
                         var score = childSnapshot.Child("score").Value.ToString();
-                        mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(player.score);
+                        // mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(player.score);
+                        mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(Player.score);
 
                     }
                 }
