@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Database;
@@ -6,14 +8,16 @@ using Firebase.Auth;
 
 public class DBAuthManager : MonoBehaviour
 {
+    [Header("[!] NOT IMPORTANT VARIABLES")]
+    [Tooltip("This variables represents the MainMenu textBoxes for register.")]
     [SerializeField] private InputField nickFieldRegister, emailFieldRegister, passwdFieldRegister;
+    [Tooltip("This variables represents the MainMenu textBoxes for login.")]
     [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
-    [SerializeField] private Player player;
-    //[SerializeField] private mPopUp popUp;
     private static FirebaseAuth auth;
     private static FirebaseUser user;
     private static DatabaseReference mDatabaseRef;
-    private static string pushKey;
+    public static bool isUserIn;
+    //private static string pushKey;
 
 
     private void Start()
@@ -22,6 +26,9 @@ public class DBAuthManager : MonoBehaviour
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         // REALTIME database reference.
         mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
+        // By default, we can not load scene until user press Register or Login button.
+        isUserIn = false;
+        print(isUserIn);
     }
 
     private void addUser(string name, string email)
@@ -32,7 +39,7 @@ public class DBAuthManager : MonoBehaviour
         string json = JsonUtility.ToJson(newUser);
         // Push newUser to RealTime database.
         mDatabaseRef.Child("users").Push().SetRawJsonValueAsync(json);
-        pushKey = mDatabaseRef.Child("users").Push().Key;
+        //pushKey = mDatabaseRef.Child("users").Push().Key;
     }
 
     /*
@@ -60,6 +67,8 @@ public class DBAuthManager : MonoBehaviour
                 addUser(nickFieldRegister.text, emailFieldRegister.text);
                 Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
+                isUserIn = true;
+
             }
 
         });
@@ -79,11 +88,17 @@ public class DBAuthManager : MonoBehaviour
                 Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
+            if (task.IsCompleted)
+            {
+                FirebaseUser newUser = task.Result;
+                Debug.LogFormat("User signed in successfully: {0} ({1})",
+                    newUser.DisplayName, newUser.UserId);
+                //getUserScore();
+                isUserIn = true;
+                print(isUserIn);
 
-            FirebaseUser newUser = task.Result;
-            Debug.LogFormat("User signed in successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
-            getUserScore();
+            }
+
         });
     }
 
@@ -102,7 +117,6 @@ public class DBAuthManager : MonoBehaviour
                     foreach (var childSnapshot in e2.Snapshot.Children)
                     {
                         var score = childSnapshot.Child("score").Value;
-                        //player.score = Convert.ToInt32(score.ToString());
                         Player.score = Convert.ToInt32(score.ToString());
                     }
                 }
@@ -124,14 +138,10 @@ public class DBAuthManager : MonoBehaviour
                     foreach (var childSnapshot in e2.Snapshot.Children)
                     {
                         var score = childSnapshot.Child("score").Value.ToString();
-                        // mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(player.score);
                         mDatabaseRef.Child("users").Child(childSnapshot.Key).Child("score").SetValueAsync(Player.score);
 
                     }
                 }
             };
-
-
-
     }
 }

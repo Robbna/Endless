@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class mHUD : MonoBehaviour
 {
@@ -23,10 +24,13 @@ public class mHUD : MonoBehaviour
         canvas_Login.SetActive(true);
         canvas_Register.SetActive(false);
     }
-    // [SerializeField] private Text scoreText;
-    // [SerializeField] private Player player;
 
-    // private void Update() {
-    //     scoreText.text = player.score.ToString();
-    // }
+    public void loadScene(string sceneName)
+    {
+        if (DBAuthManager.isUserIn)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+
+    }
 }
