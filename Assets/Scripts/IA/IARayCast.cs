@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-// [!] COMPONENTS REQUIRED.
+// [!] REQUIRED COMPONENTS.
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(IARayCast_movement))]
 public class IARayCast : MonoBehaviour
 {
