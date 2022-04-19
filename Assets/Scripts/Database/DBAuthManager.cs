@@ -28,7 +28,6 @@ public class DBAuthManager : MonoBehaviour
         mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
         // By default, we can not load scene until user press Register or Login button.
         isUserIn = false;
-        print(isUserIn);
     }
 
     private void addUser(string name, string email)
@@ -93,9 +92,8 @@ public class DBAuthManager : MonoBehaviour
                 FirebaseUser newUser = task.Result;
                 Debug.LogFormat("User signed in successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
-                //getUserScore();
+                getUserScore();
                 isUserIn = true;
-                print(isUserIn);
 
             }
 
