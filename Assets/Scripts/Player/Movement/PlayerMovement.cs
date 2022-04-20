@@ -76,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("Jump");
             rgb.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
-            //anim.SetBool("isJumping", true);
 
         }
     }
