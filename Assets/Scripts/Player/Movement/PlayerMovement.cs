@@ -53,14 +53,17 @@ public class PlayerMovement : MonoBehaviour
         // Player movement based on the input data.
         transform.Translate(new Vector2(dirX, 0.0f) * playerSpeed * Time.deltaTime);
 
-        // Jump system
+        // ===================< CHECKGROUND SYSTEM >===================
+        // isGrounded TRUE
         if (mCheckGround.checkGround(gameObject.transform, playerJumpAltitude))
         {
             anim.SetBool("isGrounded", true);
             Jump();
         }
+        // isGrounded FALSE
         else
         {
+            anim.SetBool("isRunning", false);
             anim.SetBool("isGrounded", false);
         }
 
@@ -74,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetTrigger("Jump");
             rgb.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
+            anim.SetTrigger("Jump");
 
         }
     }
