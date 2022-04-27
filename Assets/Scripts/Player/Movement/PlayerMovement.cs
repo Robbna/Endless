@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 // [!] REQUIRED COMPONENTS.
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(SpriteRenderer))]
 public class PlayerMovement : MonoBehaviour
@@ -79,6 +80,17 @@ public class PlayerMovement : MonoBehaviour
         {
             rgb.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
             anim.SetTrigger("Jump");
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Fall"))
+        {
+            Player.score = 0;
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
 
         }
     }

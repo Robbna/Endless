@@ -2,6 +2,7 @@ using UnityEngine;
 
 // [!] REQUIRED COMPONENTS.
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(IARayCast_movement))]
+[RequireComponent(typeof(IARayCast_movement))]
 public class IARayCast : MonoBehaviour
 {
     // IMPORTANT variables.
