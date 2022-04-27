@@ -13,20 +13,20 @@ public class DBAuthManager : MonoBehaviour
     [SerializeField] private InputField nickFieldRegister, emailFieldRegister, passwdFieldRegister;
     [Tooltip("This variables represents the MainMenu textBoxes for login.")]
     [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
-    private static FirebaseAuth auth;
-    private static FirebaseUser user;
-    private static DatabaseReference mDatabaseRef;
+    [SerializeField] private Text userState;
+    public static FirebaseAuth auth;
+    public static FirebaseUser user;
+    public static DatabaseReference mDatabaseRef;
     public static bool isUserIn;
-    //private static string pushKey;
 
 
     private void Start()
     {
+        userState.color = Color.red;
         // AUTH database reference.
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         // REALTIME database reference.
         mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
-        // By default, we can not load scene until user press Register or Login button.
         isUserIn = false;
     }
 
@@ -50,11 +50,15 @@ public class DBAuthManager : MonoBehaviour
         {
             if (task.IsCanceled)
             {
+                // Show message
+                mPopUp.inst.showMessage(task.Exception.ToString());
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
                 return;
             }
             if (task.IsFaulted)
             {
+                // Show message
+                mPopUp.inst.showMessage(task.Exception.ToString());
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
@@ -64,9 +68,12 @@ public class DBAuthManager : MonoBehaviour
                 FirebaseUser newUser = task.Result;
                 // Push user to Realtime Database.
                 addUser(nickFieldRegister.text, emailFieldRegister.text);
+                isUserIn = true;
+                // Show message
+                userState.text = "User created successfully!";
+                userState.color = Color.green;
                 Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
-                isUserIn = true;
 
             }
 
@@ -90,10 +97,12 @@ public class DBAuthManager : MonoBehaviour
             if (task.IsCompleted)
             {
                 FirebaseUser newUser = task.Result;
+                isUserIn = true;
+                userState.text = "User signed in successfully!";
+                userState.color = Color.green;
                 Debug.LogFormat("User signed in successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
                 getUserScore();
-                isUserIn = true;
 
             }
 

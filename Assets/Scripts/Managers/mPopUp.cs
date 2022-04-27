@@ -4,24 +4,29 @@ using UnityEngine.UI;
 
 public class mPopUp : MonoBehaviour
 {
-    private Text popUpMSG;
+    [SerializeField] private Text popUpMSG;
+    [SerializeField] private GameObject canvas;
+    public static mPopUp inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
 
     void Start()
     {
-        gameObject.SetActive(false);
-        popUpMSG = GetComponentInChildren<Text>();
+        popUpMSG.text = "";
+        canvas.SetActive(false);
     }
 
-    public void showMessage(string msg, float time)
+    public void showMessage(string msg)
     {
-        gameObject.SetActive(true);
-        StartCoroutine(messageCoroutine(msg, time));
-    }
-
-    private IEnumerator messageCoroutine(string msg, float time)
-    {
+        canvas.SetActive(true);
         popUpMSG.text = msg;
-        yield return new WaitForSeconds(time);
-        gameObject.SetActive(false);
+        Invoke("hidePopUp", 2);
+    }
+
+    private void hidePopUp(){
+        canvas.SetActive(false);
     }
 }
