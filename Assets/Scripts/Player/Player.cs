@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Text scoreText;
 
+    private void Start() {
+        DBAuthManager.getUserScore();
+    }
+
     private void Update()
     {
 

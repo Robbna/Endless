@@ -6284,6 +6284,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1021389150797330071, guid: 123f34d3f8c4e86459b7081d8265993d, type: 3}
+      propertyPath: objectToDetect
+      value: 
+      objectReference: {fileID: 2105955120}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 123f34d3f8c4e86459b7081d8265993d, type: 3}
 --- !u!1 &1011462072
@@ -7085,6 +7089,7 @@ MonoBehaviour:
   passwdFieldRegister: {fileID: 0}
   emailFieldLogin: {fileID: 0}
   passwdFieldLogin: {fileID: 0}
+  userState: {fileID: 0}
 --- !u!4 &1131162360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5698196145005381741, guid: 4e9ad2122a3d3d94e93d2d6da23fac91, type: 3}
@@ -39365,6 +39370,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1021389150797330071, guid: 123f34d3f8c4e86459b7081d8265993d, type: 3}
+      propertyPath: objectToDetect
+      value: 
+      objectReference: {fileID: 2105955120}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 123f34d3f8c4e86459b7081d8265993d, type: 3}
 --- !u!1 &2092587860

@@ -22,7 +22,6 @@ public class DBAuthManager : MonoBehaviour
 
     private void Start()
     {
-        userState.color = Color.red;
         // AUTH database reference.
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         // REALTIME database reference.
@@ -109,7 +108,7 @@ public class DBAuthManager : MonoBehaviour
         });
     }
 
-    public void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
+    public static void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
     {
         FirebaseDatabase.DefaultInstance
             .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
