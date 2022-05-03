@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Database;
@@ -14,6 +13,8 @@ public class DBAuthManager : MonoBehaviour
     [Tooltip("This variables represents the MainMenu textBoxes for login.")]
     [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
     [SerializeField] private Text userState;
+    [Tooltip("This variables represents the StartGame button.")]
+    [SerializeField] private GameObject startGameButton;
     public static FirebaseAuth auth;
     public static FirebaseUser user;
     public static DatabaseReference mDatabaseRef;
@@ -22,6 +23,7 @@ public class DBAuthManager : MonoBehaviour
 
     private void Start()
     {
+
         // AUTH database reference.
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         // REALTIME database reference.
@@ -68,9 +70,6 @@ public class DBAuthManager : MonoBehaviour
                 // Push user to Realtime Database.
                 addUser(nickFieldRegister.text, emailFieldRegister.text);
                 isUserIn = true;
-                // Show message
-                userState.text = "User created successfully!";
-                userState.color = Color.green;
                 Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
 
@@ -97,8 +96,6 @@ public class DBAuthManager : MonoBehaviour
             {
                 FirebaseUser newUser = task.Result;
                 isUserIn = true;
-                userState.text = "User signed in successfully!";
-                userState.color = Color.green;
                 Debug.LogFormat("User signed in successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
                 getUserScore();

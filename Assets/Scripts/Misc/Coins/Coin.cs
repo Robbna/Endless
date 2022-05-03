@@ -9,7 +9,6 @@ public class Coin : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Player.score++;
-            print(Player.score);
             Destroy(gameObject);
         }
     }
