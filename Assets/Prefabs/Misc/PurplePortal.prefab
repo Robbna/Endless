@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &534750836322128556
+--- !u!1 &8178964618180824190
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4256139876607182120}
-  - component: {fileID: 3076382878977421733}
-  - component: {fileID: 7737947591440960663}
-  - component: {fileID: 8436489526884381945}
+  - component: {fileID: 4922562637201219601}
+  - component: {fileID: 4838807009238473392}
+  - component: {fileID: 4424448213726826016}
+  - component: {fileID: 5684047791282299154}
+  - component: {fileID: 1667677616565697116}
   m_Layer: 0
-  m_Name: GreenPortal
+  m_Name: PurplePortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4256139876607182120
+--- !u!4 &4922562637201219601
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534750836322128556}
+  m_GameObject: {fileID: 8178964618180824190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.039305, y: -4.3739243, z: 0}
+  m_LocalPosition: {x: 1.3866539, y: -3.1681619, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3076382878977421733
+--- !u!212 &4838807009238473392
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534750836322128556}
+  m_GameObject: {fileID: 8178964618180824190}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2719994208978545080, guid: e46442a82c85cf043b0fac7b1f6b8e45, type: 3}
+  m_Sprite: {fileID: -7590852279806083750, guid: 2469c973bdc85854194ae34b56c38c27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,17 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7737947591440960663
+--- !u!95 &4424448213726826016
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534750836322128556}
+  m_GameObject: {fileID: 8178964618180824190}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 05b2c8247ae8b4c4db9df0975472a237, type: 2}
+  m_Controller: {fileID: 9100000, guid: ea11e7fbad664a84fb5c56ee6cc8f35e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -103,19 +104,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8436489526884381945
+--- !u!61 &5684047791282299154
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8178964618180824190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.17768104, y: -0.2128303}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 4, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.40011945, y: 2.887199}
+  m_EdgeRadius: 0
+--- !u!114 &1667677616565697116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534750836322128556}
+  m_GameObject: {fileID: 8178964618180824190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6375bf8fa4ef54da03f857ca72c5cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d4d7990ae6a93c4c8f59cc69f7e520c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  forceToDropPlayer: 5
-  levelToLoad: 
-  secondsToTP: 0
+  secondPortal: {fileID: 0}

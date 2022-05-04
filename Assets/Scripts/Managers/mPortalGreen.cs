@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class mPortal : MonoBehaviour
+public class mPortalGreen : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float forceToDropPlayer;
@@ -13,11 +13,12 @@ public class mPortal : MonoBehaviour
     {
         player.transform.position = gameObject.transform.position;
         player.GetComponent<Rigidbody2D>().AddForce(Vector2.right * forceToDropPlayer, ForceMode2D.Impulse);
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && Player.score >= 30)
+        if (other.CompareTag("Player") && Player.score == 30)
         {
             other.gameObject.SetActive(false);
             StartCoroutine(loadScene(levelToLoad, secondsToTP));
