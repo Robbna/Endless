@@ -126,7 +126,7 @@ public class DBAuthManager : MonoBehaviour
             };
     }
 
-    public void saveScore()
+    public static void saveScore()
     {
         FirebaseDatabase.DefaultInstance
             .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
