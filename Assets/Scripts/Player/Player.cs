@@ -17,4 +17,10 @@ public class Player : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag.Equals("Enemy")){
+            print("HIT!");
+        }
+    }
+
 }

@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rgb;
     private SpriteRenderer spr;
     private Animator anim;
+    private Scene scene;
 
     private void Start()
     {
         rgb = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        scene = SceneManager.GetActiveScene();
     }
 
     private void Update()
@@ -68,10 +70,6 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isGrounded", false);
         }
 
-
-
-
-
     }
 
     private void Jump()
@@ -88,12 +86,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Fall"))
         {
-            Player.score = 0;
-            Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
 
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            SceneManager.LoadScene(scene.name);
+        }
+    }
 
 }
