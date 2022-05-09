@@ -6,10 +6,16 @@ public class mOptions : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject mainHud;
 
+    [SerializeField] private GameObject youDiePanel;
+
+    private Scene scene;
+
     private void Start()
     {
         Time.timeScale = 1f;
         optionsPanel.SetActive(false);
+        youDiePanel.SetActive(false);
+        scene = SceneManager.GetActiveScene();
     }
 
     private void Update()
@@ -18,6 +24,12 @@ public class mOptions : MonoBehaviour
         {
             mainHud.SetActive(false);
             optionsPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
+        if(!Player.isAlive){
+            mainHud.SetActive(false);
+            youDiePanel.SetActive(true);
             Time.timeScale = 0f;
         }
     }
@@ -31,12 +43,16 @@ public class mOptions : MonoBehaviour
 
     }
 
+    public void restartGame()
+    {
+        SceneManager.LoadScene(scene.name);
+    }
+
     public void backMenu()
     {
 
         DBAuthManager.saveScore();
         SceneManager.LoadScene("MainMenu");
-
 
     }
 

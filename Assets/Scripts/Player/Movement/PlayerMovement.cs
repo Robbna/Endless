@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 // [!] REQUIRED COMPONENTS.
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(SpriteRenderer))]
 public class PlayerMovement : MonoBehaviour
@@ -16,14 +15,12 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rgb;
     private SpriteRenderer spr;
     private Animator anim;
-    private Scene scene;
 
     private void Start()
     {
         rgb = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        scene = SceneManager.GetActiveScene();
     }
 
     private void Update()
@@ -87,8 +84,6 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Fall"))
         {
             Player.playerDeath();
-            SceneManager.LoadScene(scene.name);
-
         }
     }
 
@@ -97,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag.Equals("Enemy"))
         {
             Player.playerDeath();
-            SceneManager.LoadScene(scene.name);
         }
     }
 
