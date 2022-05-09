@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDetect: {fileID: 0}
-  minDistance: 10
+  minDistance: 15
   isNear: 0
 --- !u!114 &435307867450376600
 MonoBehaviour:

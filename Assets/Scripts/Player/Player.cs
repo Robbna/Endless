@@ -4,22 +4,22 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static int score;
+    public static int currentScore;
 
     [SerializeField] private Text scoreText;
 
     private void Start()
     {
         DBAuthManager.getUserScore();
+        currentScore = 0;
     }
 
-    private void Update()
+    public static void playerDeath()
     {
-        scoreText.text = score.ToString();
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag.Equals("Enemy")){
-            print("HIT!");
+        if (currentScore > score)
+        {
+            score = currentScore;
+            DBAuthManager.saveScore();
         }
     }
 

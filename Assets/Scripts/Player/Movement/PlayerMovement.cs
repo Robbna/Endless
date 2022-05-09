@@ -86,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Fall"))
         {
+            Player.playerDeath();
             SceneManager.LoadScene(scene.name);
 
         }
@@ -95,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Enemy"))
         {
+            Player.playerDeath();
             SceneManager.LoadScene(scene.name);
         }
     }
