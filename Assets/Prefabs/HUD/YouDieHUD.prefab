@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7927883590638307386}
+  - component: {fileID: 772337430}
   m_Layer: 0
   m_Name: YouDieHUD
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &772337430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077873557094942005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbb281763004b547b30fe9b48f71073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore: {fileID: 3305382419584763475}
+  maxScore: {fileID: 4598146294441761114}
 --- !u!1 &2867112464826555728
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000005722, y: 164.24}
+  m_AnchoredPosition: {x: 0.0000042917, y: -0.0000019073}
   m_SizeDelta: {x: 300.6835, y: 50.403}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5049675645850906943
@@ -614,8 +629,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 122}
-  m_SizeDelta: {x: 300.6835, y: 34.0689}
+  m_AnchoredPosition: {x: 0, y: -47.7}
+  m_SizeDelta: {x: 217.8664, y: 40.0557}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6442343334487413175
 CanvasRenderer:
@@ -647,7 +662,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -695,8 +710,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000038147, y: 0.000002861}
-  m_SizeDelta: {x: 253.9828, y: 90.252}
+  m_AnchoredPosition: {x: 0.000013351, y: 91.3}
+  m_SizeDelta: {x: 246.0005, y: 93.2454}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9163032740017607118
 CanvasRenderer:
@@ -782,7 +797,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: mOptions, Assembly-CSharp
-        m_MethodName: BackGame
+        m_MethodName: restartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

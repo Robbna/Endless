@@ -7,7 +7,6 @@ public class mPortalGreen : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private float forceToDropPlayer;
     [SerializeField] private string levelToLoad;
-    [SerializeField] private float secondsToTP;
 
     private void Start()
     {
@@ -18,23 +17,11 @@ public class mPortalGreen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && Player.score == 30)
+        if (other.CompareTag("Player"))
         {
-            other.gameObject.SetActive(false);
-            StartCoroutine(loadScene(levelToLoad, secondsToTP));
+            SceneManager.LoadScene(levelToLoad);
         }
-    }
 
-    private IEnumerator loadScene(string levelName, float time)
-    {
 
-        yield return new WaitForSeconds(time);
-        SceneManager.LoadScene(levelName);
-    }
-    private IEnumerator hidePortal(float time)
-    {
-
-        yield return new WaitForSeconds(time);
-        gameObject.SetActive(false);
     }
 }
