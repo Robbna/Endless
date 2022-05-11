@@ -6354,7 +6354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806299777}
   - component: {fileID: 806299778}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: __Camera Confiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
