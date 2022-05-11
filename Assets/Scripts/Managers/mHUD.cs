@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class mHUD : MonoBehaviour
 {
@@ -47,7 +46,7 @@ public class mHUD : MonoBehaviour
     {
         if (DBAuthManager.isUserIn)
         {
-            SceneManager.LoadScene(sceneName);
+            LevelUtils.loadLevel(sceneName);
         }
 
     }

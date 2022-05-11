@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1536383432491977455}
   - component: {fileID: 5614638003820994413}
   - component: {fileID: 6294219268105833125}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 5816856478108208140}
   - component: {fileID: 2346630155861315758}
   - component: {fileID: 463997658027568647}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3151881747116308949}
   - component: {fileID: 3726319605634884235}
   - component: {fileID: 8887509552667619703}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ButtonMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,6 +322,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: playerSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3963949113823923447
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +346,7 @@ GameObject:
   - component: {fileID: 4126916646899820472}
   - component: {fileID: 206252530909005908}
   - component: {fileID: 1265303705922279274}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +450,7 @@ GameObject:
   - component: {fileID: 8475763150403813127}
   - component: {fileID: 2887256137552431395}
   - component: {fileID: 7843505697170809412}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 'Current score: '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +529,7 @@ GameObject:
   - component: {fileID: 5903097557820239411}
   - component: {fileID: 5405315964080362808}
   - component: {fileID: 2305983094388630829}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +610,7 @@ GameObject:
   - component: {fileID: 9103845582714087345}
   - component: {fileID: 4330924041906376894}
   - component: {fileID: 1138882148889502240}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +685,7 @@ GameObject:
   - component: {fileID: 3861633598015025240}
   - component: {fileID: 1105007136677062645}
   - component: {fileID: 5821736374720653522}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MaxScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +765,7 @@ GameObject:
   - component: {fileID: 9163032740017607118}
   - component: {fileID: 7714654423163349304}
   - component: {fileID: 6564666896003400462}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}

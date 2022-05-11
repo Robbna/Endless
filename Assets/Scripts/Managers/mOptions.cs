@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class mOptions : MonoBehaviour
@@ -11,14 +10,11 @@ public class mOptions : MonoBehaviour
 
     [SerializeField] private GameObject youDiePanel;
 
-    private Scene scene;
-
     private void Start()
     {
         Time.timeScale = 1f;
         optionsPanel.SetActive(false);
         youDiePanel.SetActive(false);
-        scene = SceneManager.GetActiveScene();
     }
 
     private void Update()
@@ -52,14 +48,14 @@ public class mOptions : MonoBehaviour
 
     public void restartGame()
     {
-        SceneManager.LoadScene(scene.name);
+        LevelUtils.loadLevel(LevelUtils.getCurrentScene().name);
     }
 
     public void backMenu()
     {
 
         DBAuthManager.saveScore();
-        SceneManager.LoadScene("MainMenu");
+        LevelUtils.loadLevel("MainMenu");
 
     }
 

@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 5816856478108208140}
   - component: {fileID: 2346630155861315758}
   - component: {fileID: 463997658027568647}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 3151881747116308949}
   - component: {fileID: 3726319605634884235}
   - component: {fileID: 8887509552667619703}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ButtonMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 4126916646899820472}
   - component: {fileID: 206252530909005908}
   - component: {fileID: 1265303705922279274}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 517611024164063227}
   - component: {fileID: 5049675645850906943}
   - component: {fileID: 3305382419584763475}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CurrentScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 5903097557820239411}
   - component: {fileID: 5405315964080362808}
   - component: {fileID: 2305983094388630829}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 9103845582714087345}
   - component: {fileID: 4330924041906376894}
   - component: {fileID: 1138882148889502240}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 833216426039064826}
   - component: {fileID: 6442343334487413175}
   - component: {fileID: 4598146294441761114}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MaxScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 9163032740017607118}
   - component: {fileID: 7714654423163349304}
   - component: {fileID: 6564666896003400462}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}

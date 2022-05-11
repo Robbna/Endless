@@ -43092,7 +43092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc315ed897a6f0c49a71d59970a30c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!95 &2105955125
 Animator:
   serializedVersion: 3
@@ -43358,6 +43357,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1123139218}
+    - target: {fileID: 8887509552667619703, guid: 5b061513a1a82a44daab41b290733df9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2105955124}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b061513a1a82a44daab41b290733df9, type: 3}
 --- !u!1 &3070780820215420718 stripped

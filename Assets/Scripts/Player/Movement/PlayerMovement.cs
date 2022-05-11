@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Fall"))
         {
-            Player.playerDeath();
+            Player.playerSave();
         }
     }
 
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Enemy"))
         {
-            Player.playerDeath();
+            Player.playerSave();
         }
     }
 
