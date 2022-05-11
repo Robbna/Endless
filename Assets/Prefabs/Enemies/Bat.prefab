@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f3938ba045edf43ba7288b6ebaefc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   distanceIA: {fileID: 435307867450376599}
   detectDirectionM: {fileID: 435307867450376601}
   playerTransform: {fileID: 0}

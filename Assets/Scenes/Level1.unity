@@ -254,6 +254,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8436489526884381945, guid: d75c5d1fdcd68994b856e54405d6c52a, type: 3}
+      propertyPath: isPlayerSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436489526884381945, guid: d75c5d1fdcd68994b856e54405d6c52a, type: 3}
       propertyPath: forceToDropPlayer
       value: 2
       objectReference: {fileID: 0}
