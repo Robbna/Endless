@@ -23,7 +23,6 @@ public class IARayCast : MonoBehaviour
         // Shot ray to the left and right side.
         hitLeft = Physics2D.Raycast(transform.position, Vector2.left, rayDistance);
         hitRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance);
-        // !TODO : Por alguna razón, si guardo el siguiente código en dos métodos distintos ('checkLeft', 'checkRight') no funciona la lógica.
         // --------------------< CHECK LEFT >--------------------
         if (hitLeft.collider != null)
         {
