@@ -5,17 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(IARayCast_movement))]
 public class IARayCast : MonoBehaviour
 {
-    // IMPORTANT variables.
-    [Header("[!] IMPORTANT VARIABLES")]
-    [Tooltip("This variable represent the object to detect.")]
     [SerializeField] private GameObject objectToDetect;
-    // MISC variables.
-    [Header("[?] Public variables")]
-    [Tooltip("This variable represent the ray distance.")]
     [SerializeField] public float rayDistance;
-    // Private variables.
     private RaycastHit2D hitLeft, hitRight;
-    // Public variables.
     [HideInInspector] public bool isLeft, isRight;
 
     private void Update()
@@ -23,6 +15,8 @@ public class IARayCast : MonoBehaviour
         // Shot ray to the left and right side.
         hitLeft = Physics2D.Raycast(transform.position, Vector2.left, rayDistance);
         hitRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance);
+
+
         // --------------------< CHECK LEFT >--------------------
         if (hitLeft.collider != null)
         {
@@ -35,6 +29,8 @@ public class IARayCast : MonoBehaviour
         {
             isLeft = false;
         }
+
+
         // --------------------< CHECK RIGHT >--------------------
         if (hitRight.collider != null)
         {
@@ -47,11 +43,6 @@ public class IARayCast : MonoBehaviour
         {
             isRight = false;
         }
-
-        // DEBUG >>>>>
-        Debug.DrawRay(transform.position, Vector2.left * rayDistance, Color.green);
-        Debug.DrawRay(transform.position, Vector2.right * rayDistance, Color.green);
-
     }
 }
 

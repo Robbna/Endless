@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class IARayCast_movement : MonoBehaviour
 {
-    // MISC variables.
-    [Header("[?] Public variables")]
-    [Tooltip("This variable represent the speed that the object will have.")]
     [SerializeField] private float speed;
     private IARayCast rayCastIA;
 

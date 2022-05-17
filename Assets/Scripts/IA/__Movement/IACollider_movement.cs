@@ -5,8 +5,6 @@ using UnityEngine;
 public class IACollider_movement : MonoBehaviour
 {
     // MISC variables.
-    [Header("[?] Public variables")]
-    [Tooltip("This variable represent the speed that the object will have.")]
     [SerializeField] private float speed;
     private IAColliderZone colliderZoneIA;
     private mDetectDirection detectDirectionM;
