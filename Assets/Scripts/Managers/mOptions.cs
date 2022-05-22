@@ -59,7 +59,7 @@ public class mOptions : MonoBehaviour
 
     public void restartGame()
     {
-        LevelUtils.loadLevel(LevelUtils.getCurrentScene().name);
+        LevelUtils.loadLevel("Level1");
     }
 
     public void backMenu()

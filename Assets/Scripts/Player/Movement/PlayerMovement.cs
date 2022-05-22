@@ -22,33 +22,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // Variable to store the input data from the player [-1, 1].
-        float dirX = Input.GetAxis("Horizontal");
-
-        // Stop.
-        if (dirX == 0)
-        {
-            anim.SetBool("isRunning", false);
-        }
-        // Right.
-        if (dirX > 0)
-        {
-            spr.flipX = false;
-            anim.SetBool("isRunning", true);
-
-        }
-        // Left.
-        if (dirX < 0)
-        {
-            spr.flipX = true;
-            anim.SetBool("isRunning", true);
-
-        }
-
-
-        // Player movement based on the input data.
-        transform.Translate(new Vector2(dirX, 0.0f) * playerSpeed * Time.deltaTime);
-
         if (leftHold)
         {
             spr.flipX = true;
@@ -60,20 +33,6 @@ public class PlayerMovement : MonoBehaviour
             spr.flipX = false;
             anim.SetBool("isRunning", true);
             transform.Translate(new Vector2(1, 0.0f) * playerSpeed * Time.deltaTime);
-        }
-
-        // ===================< CHECKGROUND SYSTEM >===================
-        // isGrounded TRUE
-        if (mCheckGround.checkGround(gameObject.transform, playerJumpAltitude))
-        {
-            anim.SetBool("isGrounded", true);
-            //Jump();
-        }
-        // isGrounded FALSE
-        else
-        {
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isGrounded", false);
         }
 
     }
@@ -93,18 +52,13 @@ public class PlayerMovement : MonoBehaviour
         leftHold = false;
         rightHold = false;
     }
+
     public void Jump()
     {
         if (mCheckGround.checkGround(gameObject.transform, playerJumpAltitude))
         {
             rgb.AddForce(Vector2.up * playerJumpForce, ForceMode2D.Impulse);
             anim.SetTrigger("Jump");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && mCheckGround.checkGround(gameObject.transform, playerJumpAltitude))
-        {
-
-
         }
     }
 

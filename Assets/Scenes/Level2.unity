@@ -1042,6 +1042,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3074246305744168227, guid: 0e7eb0d579861a74f93c2f7f0eb8bedc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 147220964}
+    - target: {fileID: 3074246305744168227, guid: 0e7eb0d579861a74f93c2f7f0eb8bedc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: openMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 3730244460072332353, guid: 0e7eb0d579861a74f93c2f7f0eb8bedc, type: 3}
       propertyPath: m_RootOrder
       value: 8

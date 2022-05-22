@@ -7,59 +7,53 @@ using Firebase.Auth;
 
 public class DBAuthManager : MonoBehaviour
 {
-    [Header("[!] NOT IMPORTANT VARIABLES")]
-    [Tooltip("This variables represents the MainMenu textBoxes for register.")]
     [SerializeField] private InputField nickFieldRegister, emailFieldRegister, passwdFieldRegister;
-    [Tooltip("This variables represents the MainMenu textBoxes for login.")]
     [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
     [SerializeField] private Text userState;
-    [Tooltip("This variables represents the StartGame button.")]
     [SerializeField] private GameObject startGameButton;
+
+    public static bool isUserIn;
     public static FirebaseAuth auth;
     public static FirebaseUser user;
     public static DatabaseReference mDatabaseRef;
-    public static bool isUserIn;
 
 
     private void Start()
     {
+        isUserIn = false;
 
         // AUTH database reference.
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         // REALTIME database reference.
         mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
-        isUserIn = false;
+
     }
 
     private void addUser(string name, string email)
     {
-        // Create new user.
         User newUser = new User(name, email, 0);
-        // JSONfy newUser.
         string json = JsonUtility.ToJson(newUser);
-        // Push newUser to RealTime database.
+
         mDatabaseRef.Child("users").Push().SetRawJsonValueAsync(json);
-        //pushKey = mDatabaseRef.Child("users").Push().Key;
     }
 
     /*
     PUBLIC METHODS
     */
+
     public void registerUser()
     {
-        auth.CreateUserWithEmailAndPasswordAsync(emailFieldRegister.text, passwdFieldRegister.text).ContinueWith(task =>
+        auth.CreateUserWithEmailAndPasswordAsync(
+            emailFieldRegister.text,
+            passwdFieldRegister.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
-                // Show message
-                mPopUp.inst.showMessage(task.Exception.ToString());
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
                 return;
             }
             if (task.IsFaulted)
             {
-                // Show message
-                mPopUp.inst.showMessage(task.Exception.ToString());
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
@@ -80,7 +74,9 @@ public class DBAuthManager : MonoBehaviour
 
     public void loginUser()
     {
-        auth.SignInWithEmailAndPasswordAsync(emailFieldLogin.text, passwdFieldLogin.text).ContinueWith(task =>
+        auth.SignInWithEmailAndPasswordAsync(
+            emailFieldLogin.text,
+            passwdFieldLogin.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
@@ -105,7 +101,7 @@ public class DBAuthManager : MonoBehaviour
         });
     }
 
-    public static void getUserScore() // https://www.codegrepper.com/code-examples/go/firebase+where+unity+query
+    public static void getUserScore()
     {
         FirebaseDatabase.DefaultInstance
             .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
@@ -129,8 +125,12 @@ public class DBAuthManager : MonoBehaviour
     public static void saveScore()
     {
         FirebaseDatabase.DefaultInstance
-            .GetReference("users").OrderByChild("email").EqualTo(auth.CurrentUser.Email)
-            .ValueChanged += (object sender2, ValueChangedEventArgs e2) =>
+            .GetReference("users")
+            .OrderByChild("email")
+            .EqualTo(auth.CurrentUser.Email)
+            .ValueChanged += (
+                object sender2,
+                ValueChangedEventArgs e2) =>
             {
                 if (e2.DatabaseError != null)
                 {
