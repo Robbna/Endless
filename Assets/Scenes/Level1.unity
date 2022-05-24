@@ -8319,7 +8319,6 @@ MonoBehaviour:
   controlHud: {fileID: 1320810813}
   suggestionlPanel: {fileID: 1265857699}
   currentScore: {fileID: 3070780820215420720}
-  fieldInput: {fileID: 0}
   maxScore: {fileID: 3070780820215420719}
   youDiePanel: {fileID: 772337429}
 --- !u!82 &1123139219
