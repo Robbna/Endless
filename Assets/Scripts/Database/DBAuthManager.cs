@@ -8,7 +8,7 @@ using Firebase.Auth;
 public class DBAuthManager : MonoBehaviour
 {
     [SerializeField] private InputField nickFieldRegister, emailFieldRegister, passwdFieldRegister;
-    [SerializeField] private InputField emailFieldLogin, passwdFieldLogin;
+    [SerializeField] private InputField emailFieldLogin, passwdFieldLogin, suggestionField;
     [SerializeField] private Text userState;
     [SerializeField] private GameObject startGameButton;
 
@@ -99,6 +99,15 @@ public class DBAuthManager : MonoBehaviour
             }
 
         });
+    }
+
+    public void sendSuggestion()
+    {
+        Suggestion newSug = new Suggestion(auth.CurrentUser.Email, suggestionField.text);
+        string json = JsonUtility.ToJson(newSug);
+
+        mDatabaseRef.Child("suggestion").Push().SetRawJsonValueAsync(json);
+        suggestionField.text = "Suggestion send succesfully!";
     }
 
     public static void getUserScore()

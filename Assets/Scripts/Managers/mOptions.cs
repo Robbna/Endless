@@ -6,6 +6,7 @@ public class mOptions : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject mainHud;
     [SerializeField] private GameObject controlHud;
+    [SerializeField] private GameObject suggestionlPanel;
     [SerializeField] private Text currentScore;
     [SerializeField] private Text maxScore;
 
@@ -16,6 +17,7 @@ public class mOptions : MonoBehaviour
         Time.timeScale = 1f;
         optionsPanel.SetActive(false);
         youDiePanel.SetActive(false);
+        suggestionlPanel.SetActive(false);
         controlHud.SetActive(true);
     }
 
@@ -37,6 +39,17 @@ public class mOptions : MonoBehaviour
             youDiePanel.SetActive(true);
             Time.timeScale = 0f;
         }
+    }
+
+    public void openSuggestion()
+    {
+        optionsPanel.SetActive(false);
+        suggestionlPanel.SetActive(true);
+    }
+    public void closeSuggestion()
+    {
+        suggestionlPanel.SetActive(false);
+        optionsPanel.SetActive(true);
     }
 
     public void openMenu()
